@@ -15,20 +15,32 @@ import TodoTableActions from "./TodoTableActions";
 
 export default function TodoTable({ todos }: { todos: ITodo[] }) {
   return (
-    <div className="max-w-4xl mx-auto mt-12 p-6 bg-gradient-to-br from-neutral-900 via-black to-neutral-800 rounded-2xl shadow-2xl border border-neutral-700">
+    <div
+      className="
+      max-w-6xl mx-auto mt-12 p-6 rounded-2xl shadow-2xl border 
+      bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 border-gray-300
+      dark:from-neutral-900 dark:via-black dark:to-neutral-800 dark:border-neutral-700
+    "
+    >
       <Table>
-        <TableCaption className="text-neutral-400 italic">
+        <TableCaption className="italic text-gray-600 dark:text-neutral-400">
           {todos.length
             ? "A list of your recent todos."
             : "No todos yet. Add your first one 🚀"}
         </TableCaption>
 
         <TableHeader>
-          <TableRow className="border-b border-neutral-700">
-            <TableHead className="text-neutral-300">ID</TableHead>
-            <TableHead className="text-neutral-300">Title</TableHead>
-            <TableHead className="text-neutral-300">Completed</TableHead>
-            <TableHead className="text-right text-neutral-300">
+          <TableRow className="border-b border-gray-300 dark:border-neutral-700 bg-gray-200/50 dark:bg-transparent">
+            <TableHead className="text-gray-800 dark:text-neutral-300">
+              ID
+            </TableHead>
+            <TableHead className="text-gray-800 dark:text-neutral-300">
+              Title
+            </TableHead>
+            <TableHead className="text-gray-800 dark:text-neutral-300">
+              Completed
+            </TableHead>
+            <TableHead className="text-right text-gray-800 dark:text-neutral-300">
               Actions
             </TableHead>
           </TableRow>
@@ -38,21 +50,31 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
           {todos.map((todo) => (
             <TableRow
               key={todo?.id}
-              className="transition-all duration-300 hover:bg-neutral-800/60 hover:scale-[1.01]"
+              className="transition-all duration-300 hover:bg-gray-300/40 dark:hover:bg-neutral-800/60 hover:scale-[1.01]"
             >
-              <TableCell className="font-mono text-sm text-neutral-400">
+              <TableCell className="font-mono text-sm text-gray-600 dark:text-neutral-400">
                 {todo?.id}
               </TableCell>
-              <TableCell className="font-semibold text-neutral-200">
+              <TableCell className="font-semibold text-gray-900 dark:text-neutral-200">
                 {todo?.title}
               </TableCell>
               <TableCell>
                 {todo?.completed ? (
-                  <Badge className="bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-md">
+                  <Badge
+                    className="
+                    bg-green-500/90 text-white shadow-sm
+                    dark:bg-gradient-to-r dark:from-green-500 dark:to-emerald-600 dark:shadow-md
+                  "
+                  >
                     Completed
                   </Badge>
                 ) : (
-                  <Badge className="bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md">
+                  <Badge
+                    className="
+                    bg-red-500/90 text-white shadow-sm
+                    dark:bg-gradient-to-r dark:from-red-500 dark:to-orange-500 dark:shadow-md
+                  "
+                  >
                     Not Completed
                   </Badge>
                 )}
@@ -66,11 +88,14 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
 
         {todos.length > 0 && (
           <TableFooter>
-            <TableRow className="border-t border-neutral-700">
-              <TableCell colSpan={3} className="font-semibold text-neutral-300">
+            <TableRow className="border-t border-gray-300 dark:border-neutral-700 bg-gray-200/40 dark:bg-transparent">
+              <TableCell
+                colSpan={3}
+                className="font-semibold text-gray-800 dark:text-neutral-300"
+              >
                 Total
               </TableCell>
-              <TableCell className="text-right text-neutral-200 font-bold">
+              <TableCell className="text-right text-gray-900 dark:text-neutral-200 font-bold">
                 {todos.length}
               </TableCell>
             </TableRow>
@@ -80,7 +105,9 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
 
       {!todos.length && (
         <div className="flex flex-col items-center justify-center py-10 text-center">
-          <p className="text-neutral-400 mb-4">You don’t have any todos yet.</p>
+          <p className="mb-4 text-gray-600 dark:text-neutral-400">
+            You don’t have any todos yet.
+          </p>
         </div>
       )}
     </div>

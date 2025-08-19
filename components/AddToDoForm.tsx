@@ -58,7 +58,7 @@ const AddToDoForm = ({ userId }: { userId: string | null }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <form>
-        <div className="flex justify-end mt-3 max-w-4xl mx-auto">
+        <div className="flex justify-end mt-3 max-w-6xl mx-auto">
           {" "}
           <DialogTrigger asChild>
             <Button className="cursor-pointer">
