@@ -32,6 +32,7 @@ import { createTodoListAction } from "@/actions/todo.actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Spinner } from "./Spinner";
+
 const AddToDoForm = ({ userId }: { userId: string | null }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -43,7 +44,7 @@ const AddToDoForm = ({ userId }: { userId: string | null }) => {
       completed: false,
     },
   });
-
+  const [showSuccess, setShowSuccess] = useState(false);
   const onSubmit = async (data: z.infer<typeof todoFormSchema>) => {
     setLoading(true);
     await createTodoListAction({
@@ -54,14 +55,16 @@ const AddToDoForm = ({ userId }: { userId: string | null }) => {
     });
     setLoading(false);
     setOpen(false);
+    if (data.completed) {
+      setShowSuccess(true);
+    }
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <form>
-        <div className="flex justify-end mt-3 max-w-6xl mx-auto">
-          {" "}
+        <div className="flex justify-end mt-3 max-w-6xl mx-auto ">
           <DialogTrigger asChild>
-            <Button className="cursor-pointer">
+            <Button className="cursor-pointer ">
               <Plus size={14} className="mr-1" />
               New Todo
             </Button>

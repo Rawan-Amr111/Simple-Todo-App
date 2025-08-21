@@ -33,12 +33,14 @@ import {
   updateTodoListAction,
 } from "@/actions/todo.actions";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Spinner } from "./Spinner";
 import { ITodo } from "@/interfaces";
+import SuccessOverlay from "./SuccessOverlay";
 const EditToDoForm = ({ todo }: { todo: ITodo }) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+
   const form = useForm<z.infer<typeof todoFormSchema>>({
     resolver: zodResolver(todoFormSchema),
     defaultValues: {
@@ -59,94 +61,97 @@ const EditToDoForm = ({ todo }: { todo: ITodo }) => {
     setLoading(false);
     setOpen(false);
   };
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <form>
-        <DialogTrigger asChild>
-          <Button className="cursor-pointer">
-            <Pen size={16} />
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Edit Todo</DialogTitle>
-          </DialogHeader>
-          <div className="py-4">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8"
-              >
-                <FormField
-                  control={form.control}
-                  name="title"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Title</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Do ..." {...field} />
-                      </FormControl>
+    <>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <form>
+          <DialogTrigger asChild>
+            <Button className="cursor-pointer">
+              <Pen size={16} />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Edit Todo</DialogTitle>
+            </DialogHeader>
+            <div className="py-4">
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name="title"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Title</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Do ..." {...field} />
+                        </FormControl>
 
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="body"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Short Description</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Tell us a little bit about your todo"
-                          className="resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormDescription>
-                        You can write a short description about your todo
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={form.control}
+                    name="body"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Short Description</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Tell us a little bit about your todo"
+                            className="resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          You can write a short description about your todo
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="completed"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          ref={field.ref}
-                        />
-                      </FormControl>
-                      <FormLabel>Completed</FormLabel>
+                  <FormField
+                    control={form.control}
+                    name="completed"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            ref={field.ref}
+                          />
+                        </FormControl>
+                        <FormLabel>Completed</FormLabel>
 
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <Button type="submit" disabled={loading}>
-                  {loading ? (
-                    <>
-                      <Spinner /> Saving
-                    </>
-                  ) : (
-                    "Save"
-                  )}
-                </Button>
-              </form>
-            </Form>
-          </div>
-        </DialogContent>
-      </form>
-    </Dialog>
+                  <Button type="submit" disabled={loading}>
+                    {loading ? (
+                      <>
+                        <Spinner /> Saving
+                      </>
+                    ) : (
+                      "Save"
+                    )}
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </DialogContent>
+        </form>
+      </Dialog>
+    </>
   );
 };
 

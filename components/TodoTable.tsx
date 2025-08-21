@@ -9,15 +9,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-
+import Celebration from "./Celebration";
 import { ITodo } from "@/interfaces";
 import TodoTableActions from "./TodoTableActions";
 
 export default function TodoTable({ todos }: { todos: ITodo[] }) {
+  const completed = todos.filter((t) => t.completed);
+  const allCompleted = todos.length > 0 && todos.length === completed.length;
   return (
     <div
       className="
-      max-w-6xl mx-auto mt-12 p-6 rounded-2xl shadow-2xl border 
+      max-w-6xl mx-auto mt-6 p-6 rounded-2xl shadow-2xl border 
       bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 border-gray-300
       dark:from-neutral-900 dark:via-black dark:to-neutral-800 dark:border-neutral-700
     "
@@ -25,7 +27,7 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
       <Table>
         <TableCaption className="italic text-gray-600 dark:text-neutral-400">
           {todos.length
-            ? "A list of your recent todos."
+            ? "complete your todos for a little surprise!"
             : "No todos yet. Add your first one 🚀"}
         </TableCaption>
 
@@ -108,6 +110,11 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
           <p className="mb-4 text-gray-600 dark:text-neutral-400">
             You don’t have any todos yet.
           </p>
+        </div>
+      )}
+      {allCompleted && (
+        <div className="fixed  flex items-center justify-center  z-50">
+          <Celebration show />
         </div>
       )}
     </div>
