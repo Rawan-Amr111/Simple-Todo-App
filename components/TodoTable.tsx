@@ -114,7 +114,7 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
       )}
       {allCompleted && (
         <div className="fixed  flex items-center justify-center  z-50">
-          <Celebration show />
+          <Celebration key={todos.length} show />
         </div>
       )}
     </div>
