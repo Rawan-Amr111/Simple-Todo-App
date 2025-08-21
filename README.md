@@ -66,5 +66,5 @@ This app is automatically deployed via **Vercel**. To deploy your own instance:
 
 
 
-MIT License — feel free to use, modify, and redistribute.
+
 
