@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simple Todo App
 
-## Getting Started
+A clean and minimal **Todo app** built with **Next.js**, featuring task creation, editing, deletion, completion, and smooth UX enhancements. Designed for a delightful user experience with responsive UI and dark mode support.
 
-First, run the development server:
+##  Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 [Live Application on Vercel](https://simple-todo-llseqj41s-rawan-amrs-projects.vercel.app)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Add**, **Edit**, **Delete**, and **Toggle** todos
+- **Celebrate** when all todos are marked as completed
+- **Progress tracking** with visual indicator
+- **Dark mode** support with smooth theme transitions
+- **Responsive design** that adapts to mobile and desktop
+- Clean accessibility via **shadcn/ui** components
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+##  Tech Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js** (App Router + server actions)
+- **TypeScript** for static typing
+- **Tailwind CSS** for styling
+- **shadcn/ui** for accessible UI components
+- Optional: **Clerk** (auth integration)
+- Deployed on **Vercel**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+##  Description
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This application lets users keep track of their tasks effortlessly. You can:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Add** tasks via a form.
+2. **Edit** task titles inline.
+3. **Toggle** completion status of each task.
+4. **Delete** tasks you no longer need.
+5. Watch a cheerful **celebration animation** when all tasks are marked complete.
+6. View your **progress** with an intuitive progress bar.
+
+Dark mode and responsive layouts ensure a comfortable experience across all devices.
+
+---
+
+##  Deployment
+
+This app is automatically deployed via **Vercel**. To deploy your own instance:
+
+1. Push your project to **GitHub**.
+2. Import the repository into **Vercel**.
+3. (Optional) Add required environment variables in **Project Settings**:
+   - If using **Clerk**:
+     ```
+     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+     CLERK_SECRET_KEY
+     ```
+4. Vercel will build and deploy the app using the following defaults:
+   - **Build Command:** `npm run build`
+   - **Output Directory:** handled by Next.js
+5. Your live link will be available right after deployment!
+
+---
+
+
+
+MIT License — feel free to use, modify, and redistribute.
+
