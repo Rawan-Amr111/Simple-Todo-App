@@ -4,7 +4,7 @@ A clean and minimal **Todo app** built with **Next.js**, featuring task creation
 
 ##  Live Demo
 
-🔗 [Live Application on Vercel](https://simple-todo-llseqj41s-rawan-amrs-projects.vercel.app)
+🔗 [Live Application on Vercel](https://simple-todo-app-gamma-eight.vercel.app/)
 
 ---
 
